@@ -1,11 +1,162 @@
 import Image from "next/image";
+import Script from "next/script";
 import FAQSection from "./components/FAQSection";
 import LeadForm from "./components/LeadForm";
+import MobileMenu from "./components/MobileMenu";
 
 export default function Home() {
+  // Structured Data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "RealEstateAgent",
+        "@id": "https://urbanrise.ae/#organization",
+        "name": "Urban Rise Real Estate",
+        "description": "Dubai real estate investment specialists offering premium properties with exceptional ROI for international investors",
+        "url": "https://urbanrise.ae",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://urbanrise.ae/images/logo.svg",
+          "width": 240,
+          "height": 60
+        },
+        "image": "https://urbanrise.ae/images/logo.svg",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+971-XX-XXX-XXXX",
+          "contactType": "Customer Service",
+          "availableLanguage": ["English", "Arabic"],
+          "areaServed": "Dubai, UAE"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Dubai",
+          "addressCountry": "UAE",
+          "addressRegion": "Dubai"
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Dubai"
+          },
+          {
+            "@type": "Country", 
+            "name": "United Arab Emirates"
+          }
+        ],
+        "priceRange": "AED 500,000 - AED 10,000,000",
+        "paymentAccepted": ["Cash", "Bank Transfer", "Mortgage"],
+        "currenciesAccepted": "AED"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://urbanrise.ae/#website",
+        "url": "https://urbanrise.ae",
+        "name": "Urban Rise Real Estate",
+        "description": "Dubai Real Estate Investment Platform",
+        "publisher": {
+          "@id": "https://urbanrise.ae/#organization"
+        },
+        "potentialAction": [
+          {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://urbanrise.ae/search?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://urbanrise.ae/#webpage",
+        "url": "https://urbanrise.ae",
+        "name": "Dubai Real Estate Investment | 9% ROI Properties",
+        "isPartOf": {
+          "@id": "https://urbanrise.ae/#website"
+        },
+        "about": {
+          "@id": "https://urbanrise.ae/#organization"
+        },
+        "description": "Invest in Dubai real estate with up to 9% ROI. 100% foreign ownership, Golden Visa eligible properties. Expert guidance for international investors.",
+        "breadcrumb": {
+          "@id": "https://urbanrise.ae/#breadcrumb"
+        },
+        "inLanguage": "en-AE",
+        "potentialAction": [
+          {
+            "@type": "ReadAction",
+            "target": ["https://urbanrise.ae"]
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://urbanrise.ae/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://urbanrise.ae"
+          }
+        ]
+      }
+    ]
+  };
+
+  const faqStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can foreigners buy property in Dubai?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, foreigners can buy property in Dubai with 100% ownership rights in designated freehold areas including Downtown Dubai, Dubai Marina, Business Bay, and many other premium locations."
+        }
+      },
+      {
+        "@type": "Question", 
+        "name": "What is the minimum investment for Dubai Golden Visa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The minimum property investment for Dubai Golden Visa is AED 2 million for residential properties. The Golden Visa provides 10-year renewable residency for you and your family."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the typical rental yields in Dubai?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Dubai rental yields typically range from 6-9% annually. Prime areas like Dubai Marina and Downtown offer 6-7% yields, while emerging areas can provide up to 9% returns."
+        }
+      }
+    ]
+  };
   return (
-    <div className="min-h-screen bg-white font-[var(--font-open-sans)]">
-      {/* Header */}
+    <>
+      {/* Structured Data */}
+      <Script
+        id="structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData)
+        }}
+      />
+      <Script
+        id="faq-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqStructuredData)
+        }}
+      />
+
+      <div className="min-h-screen bg-white font-[var(--font-open-sans)]">
+        {/* Header */}
       <header className="fixed w-full backdrop-blur-md bg-white/90 border-b border-white/20 shadow-[0_8px_30px_rgb(0,0,0,0.12)] z-50 supports-[backdrop-filter]:bg-white/60">
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-20">
@@ -48,26 +199,25 @@ export default function Home() {
               </div>
             </nav>
 
-            {/* Mobile Menu Button */}
-            <button className="lg:hidden text-gray-800 hover:text-[#d7b029] transition-all duration-300 ease-in-out rounded-full p-3 hover:bg-black/5 backdrop-blur-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              </svg>
-            </button>
+            {/* Mobile Menu */}
+            <MobileMenu />
           </div>
         </div>
       </header>
+
+
 
       {/* Add padding to account for fixed header */}
       <div className="h-20"></div>
 
       {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
+      <main>
+        <section id="hero" className="relative min-h-screen flex items-center overflow-hidden" aria-label="Dubai Real Estate Investment Hero">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/bg.jpg"
-            alt="Dubai Skyline - Luxury Real Estate Investment"
+            alt="Dubai skyline showcasing luxury real estate investment opportunities with modern skyscrapers, Downtown Dubai, and premium residential developments"
             fill
             className="object-cover object-center"
             priority
@@ -103,14 +253,14 @@ export default function Home() {
 
             {/* Main Headline */}
             <h1 className="font-[var(--font-playfair)] text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 leading-tight">
-              Invest Smart in
-              <span className="block text-[#d7b029] animate-pulse">Dubai Property</span>
+              Dubai Real Estate Investment
+              <span className="block text-[#d7b029] animate-pulse">9% ROI Properties</span>
             </h1>
 
             {/* Subheadline */}
             <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl">
-              Discover flats with <strong className="text-[#d7b029]">up to 9% ROI</strong>. Explore the best areas to invest, 
-              off-plan & ready units, with tailored payment plans. 100% free consultation.
+              <strong className="text-[#d7b029]">100% foreign ownership</strong> properties in Dubai Marina, Downtown Dubai & Business Bay. 
+              <strong className="text-[#d7b029]">Golden Visa eligible</strong> investments from AED 500K with flexible payment plans.
             </p>
 
             {/* Key Benefits Cards */}
@@ -169,7 +319,8 @@ export default function Home() {
             <div className="w-1 h-3 bg-[#d7b029] rounded-full mt-2"></div>
           </div>
         </div>
-      </section>
+        </section>
+      </main>
 
       {/* Why Invest Section */}
       <section id="why-invest" className="py-32 bg-gradient-to-b from-gray-50 to-white">
@@ -309,7 +460,7 @@ export default function Home() {
       </section>
 
       {/* Best ROI Areas Section */}
-      <section id="roi-areas" className="py-32 bg-gradient-to-b from-white to-gray-50">
+      <section id="roi-areas" className="py-5 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-6">
           {/* Section Header */}
           <div className="text-center mb-20">
@@ -1843,5 +1994,6 @@ export default function Home() {
         </div>
       </footer>
     </div>
+    </>
   );
 }
