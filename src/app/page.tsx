@@ -253,7 +253,7 @@ export default function Home() {
                 <h3 className="font-[var(--font-playfair)] text-3xl font-bold mb-8 text-center text-gray-900">
                   Rental Yield vs <span className="text-[#d7b029]">Global Cities</span>
                 </h3>
-                <div className="relative h-[450px] bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 flex items-center justify-center">
+                <div className="relative h-[520px] bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 flex items-center justify-center">
                   <div className="space-y-8 w-full">
                     {/* Dubai */}
                     <div className="space-y-3">
