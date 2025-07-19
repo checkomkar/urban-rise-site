@@ -1,16 +1,24 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Open_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import StageWiseToolbarWrapper from "./components/StageWiseToolbar";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
+const playfair = localFont({
+  src: "../../public/fonts/PlayfairDisplay.ttf",
   variable: "--font-playfair",
+  display: "swap",
 });
 
-const inter = Inter({
+const openSans = Open_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-open-sans",
+});
+
+const sephir = localFont({
+  src: "./fonts/Sephir-Regular.otf",
+  variable: "--font-sephir",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${playfair.variable} ${inter.variable} antialiased`}>
+      <body className={`${playfair.variable} ${openSans.variable} ${sephir.variable} antialiased`}>
         {children}
         <StageWiseToolbarWrapper />
       </body>
