@@ -1,21 +1,23 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from "next/image";
 import Link from "next/link";
+import { use } from 'react';
 
 interface PropertyDetailProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default function PropertyDetail({ params }: PropertyDetailProps) {
+  const { id } = use(params);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Mock property data - in real app, this would be fetched based on ID
   const property = {
-    id: params.id,
+    id: id,
     title: "Luxury 2BR Apartment in Dubai Marina",
     location: "Dubai Marina",
     price: "AED 1,200,000",
