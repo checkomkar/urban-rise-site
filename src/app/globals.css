@@ -54,3 +54,11 @@ h5,
 h6 {
     font-family: var(--font-playfair), 'PlayfairDisplay', serif;
 }
+
+/* Line clamping utility */
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
