@@ -3,6 +3,7 @@ import Script from "next/script";
 import FAQSection from "./components/FAQSection";
 import LeadForm from "./components/LeadForm";
 import MobileMenu from "./components/MobileMenu";
+import AboutSection from "./components/AboutSection";
 
 export default function Home() {
   // Structured Data for SEO
@@ -177,6 +178,7 @@ export default function Home() {
               <a href="/properties" className="text-gray-800 hover:text-[#d7b029] transition-all duration-300 ease-in-out relative after:absolute after:w-0 after:h-0.5 after:bg-[#d7b029] after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full font-medium">Properties</a>
               <a href="/blog" className="text-gray-800 hover:text-[#d7b029] transition-all duration-300 ease-in-out relative after:absolute after:w-0 after:h-0.5 after:bg-[#d7b029] after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full font-medium">Blog</a>
               <a href="#why-invest" className="text-gray-800 hover:text-[#d7b029] transition-all duration-300 ease-in-out relative after:absolute after:w-0 after:h-0.5 after:bg-[#d7b029] after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full font-medium">Why Dubai</a>
+              <a href="#about" className="text-gray-800 hover:text-[#d7b029] transition-all duration-300 ease-in-out relative after:absolute after:w-0 after:h-0.5 after:bg-[#d7b029] after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full font-medium">About</a>
               <a href="#roi-areas" className="text-gray-800 hover:text-[#d7b029] transition-all duration-300 ease-in-out relative after:absolute after:w-0 after:h-0.5 after:bg-[#d7b029] after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full font-medium">Best Areas</a>
               <a href="#developers" className="text-gray-800 hover:text-[#d7b029] transition-all duration-300 ease-in-out relative after:absolute after:w-0 after:h-0.5 after:bg-[#d7b029] after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full font-medium">Developers</a>
               <a href="#investment-tools" className="text-gray-800 hover:text-[#d7b029] transition-all duration-300 ease-in-out relative after:absolute after:w-0 after:h-0.5 after:bg-[#d7b029] after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full font-medium">ROI Tools</a>
@@ -461,6 +463,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* About Section */}
+      <AboutSection />
+
       {/* Best ROI Areas Section */}
       <section id="roi-areas" className="py-5 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-6">
@@ -480,7 +485,7 @@ export default function Home() {
             <div className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#d7b029]/50 transition-all duration-300 hover:shadow-2xl">
               <div className="relative h-64 overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=600&h=400&fit=crop"
+                  src="/images/dubai-marina-listings.jpeg"
                   alt="Dubai Marina - Premium Waterfront Investment"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -528,7 +533,7 @@ export default function Home() {
             <div className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#d7b029]/50 transition-all duration-300 hover:shadow-2xl">
               <div className="relative h-64 overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?w=600&h=400&fit=crop"
+                  src="/images/dubai-downtown.jpeg"
                   alt="Downtown Dubai - Iconic Burj Khalifa Area"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -576,7 +581,7 @@ export default function Home() {
             <div className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#d7b029]/50 transition-all duration-300 hover:shadow-2xl">
               <div className="relative h-64 overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1496307653780-42ee777d4833?w=600&h=400&fit=crop"
+                  src="/images/business-bay.jpeg"
                   alt="Business Bay - Dubai's Manhattan"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
